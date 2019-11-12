@@ -1,18 +1,18 @@
-Learn more or give us feedback
 package producer
 
 import (
-	"github.com/Shopify/sarama"
 	"log"
 	"os"
 	"os/signal"
 	"time"
+
+	"github.com/Shopify/sarama"
 )
 
 var (
 	kafkaBrokers = []string{"localhost:9093"}
-	KafkaTopic = "sarama_topic"
-	enqueued int
+	KafkaTopic   = "sarama_topic"
+	enqueued     int
 )
 
 func StartProducer() {
@@ -34,7 +34,7 @@ func StartProducer() {
 }
 
 // setupProducer will create a AsyncProducer and returns it
-func setupProducer() (sarama.AsyncProducer, error){
+func setupProducer() (sarama.AsyncProducer, error) {
 	config := sarama.NewConfig()
 	sarama.Logger = log.New(os.Stderr, "[sarama_logger]", log.LstdFlags)
 	return sarama.NewAsyncProducer(kafkaBrokers, config)
